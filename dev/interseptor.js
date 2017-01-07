@@ -19,6 +19,7 @@
       responseError: function(response) {
         loadingService.hideSpinner();
         if (response.status == 401) {
+          tokenService.clearToken();
           $location.path('/login');
         }
         return response;

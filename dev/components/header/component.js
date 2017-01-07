@@ -8,8 +8,15 @@
     }
   });
 
-  ctrl.$inject = [];
-  function ctrl() {
+  ctrl.$inject = ['$location', 'tokenService'];
+  function ctrl($location, tokenService) {
     var vm = this;
+
+    vm.isAuthenticated = !!tokenService.getToken();
+
+    vm.invalidateSession = function () {
+      tokenService.clearToken();
+      $location.path('/login');
+    };
   }
 })(angular);

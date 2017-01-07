@@ -5,13 +5,8 @@ header
     img.logo(src='/files/images/logo_bizkonect.png')
   .navigation-components.right
     div.auth-buttons.inlineBlock
-      span(
+      span.pointer(
         ng-if="vm.isAuthenticated"
         ng-click="vm.invalidateSession()")
         | Logout
-      //- TODO: is it needed
-      a(
-        ng-if="!vm.isAuthenticated"
-        href="/auth")
-        | Login
     .photo
