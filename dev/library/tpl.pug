@@ -1,0 +1,38 @@
+.library-wrapper
+  app-header
+  .navigation
+    img.tab-icon(src='/files/images/video-tab-icon.png', alt='')
+    .navigation-bar-container
+      ul.navigation-bar
+        li
+          a.active(href='') VIDEOS
+        li
+          a(href='') LANDINGS
+        li
+          a(href='') EMAILS
+        li
+          a(href='') ANALYTICS
+        li
+          a(href='') CONTACTS
+
+  //- TODO: upload file
+  //- {{upload-video isShown=isShownUploadPopup}}
+
+  //- {{video-record isShown=isShownRecordPopup}}
+
+  //- TODO: fab-buttons
+  //- {{watch-buttons isShownRecordPopup=isShownRecordPopup isShownUploadPopup=isShownUploadPopup}}
+
+  //- TODO: video-list
+  //- {{library-content-videos-container 
+  //-     isShownUploadPopup=isShownUploadPopup
+  //-     isShownRecordPopup=isShownRecordPopup
+  //-     videos=videos
+  //-     isShownSendPopup=isShownSendPopup
+  //-     videoId=videoId
+  //- }}
+
+  //- {{send-popup
+  //-     isShownSendPopup=isShownSendPopup
+  //-     videoId=videoId
+  //- }}
