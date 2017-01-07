@@ -20,6 +20,7 @@
         if (response.status == 401) {
           $location.path('/login');
         }
+        return response;
       }
     };
   }

@@ -4,14 +4,15 @@
 
   app.config(config);
 
-  config.$inject = ['$routeProvider'];
-  function config($routeProvider) {
-    // $routeProvider.when('auth', {
-    //   controller: 'authCtrl',
-    //   controllerAs: 'vm',
-    //   templateUrl: ''
-    // });
-    $routeProvider.when('/library', {
+  config.$inject = ['$routeProvider', '$httpProvider'];
+  function config($routeProvider, $httpProvider) {
+    $httpProvider.interceptors.push('interseptor');
+
+    $routeProvider.when('/login', {
+      controller: 'authCtrl',
+      controllerAs: 'vm',
+      templateUrl: 'auth/login.html'
+    }).when('/library', {
       controller: 'libraryCtrl',
       controllerAs: 'vm',
       templateUrl: 'library/tpl.html'

@@ -54,6 +54,22 @@ $error-message-color:          #B71C1C;
        url('/files/Roboto/roboto-italic.woff') format('woff');
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px $auth-background-color inset;
+}
+
+input:-moz-autofill {
+  -moz-box-shadow: 0 0 0px 1000px $auth-background-color inset;
+}
+
+input:-o-autofill {
+  -o-box-shadow: 0 0 0px 1000px $auth-background-color inset;
+}
+
+input:-khtml-autofill {
+  -khtml-box-shadow: 0 0 0px 1000px $auth-background-color inset;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -89,6 +105,12 @@ body {
   vertical-align: middle;
 }
 
+.error {
+  color: $error-message-color;
+  text-align: center;
+  margin: 10px auto 0px auto;
+}
+
 //UPLOAD POPUP
 .popupContainer {
   position: fixed;
@@ -97,7 +119,7 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 99;
   background-color: rgba(0, 0, 0, 0.35);
 
   &.shown {
@@ -197,13 +219,14 @@ body {
 }
 
 .loader {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-color: rgba(0,0,0,0.5);
   text-align: center;
+  z-index: 999;
 }
 
 //WATCH VIDEO PAGE
@@ -484,11 +507,15 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 99;
   background-color: rgba(0, 0, 0, 0.35);
 
   &.shown {
     display: block;
+  }
+
+  .error {
+    margin-bottom: -30px;
   }
 
   .popup {
@@ -497,11 +524,22 @@ body {
     left: 50%;
     max-width: 725px;
     width: 100%;
-    height: 643px;
+    min-height: 643px;
     border-radius: 2px;
     background-color:  #f8f8f8;
     box-shadow: 5px 10px 21px 0px rgba(0, 0, 0, 0.26);
     transform: translate(-50%, -50%);
+    
+    .videoNameContainer {
+      text-align: center;
+
+      input {
+        border: 1px solid #f6f6f6;
+        background: none;
+        font-size: 18px;
+        margin: 10px 0 -10px 0;
+      }
+    }
 
     .popupTitle {
       padding-top: 25px;

@@ -19,6 +19,7 @@ var sequence = require('gulp-sequence');
 var modrewrite = require('connect-modrewrite');
 var modrewrite = require('connect-modrewrite');
 var debug = require('gulp-debug');
+var sourcemaps = require('gulp-sourcemaps');
 
 var config = {
   autoprefixer: {
@@ -65,8 +66,10 @@ gulp.task('app-js', function () {
   return gulp.src(path.js)
     .pipe( plumber() )
     .pipe( order(config.jsOrder) )
+    .pipe(sourcemaps.init())
     .pipe( concat('app.js') )
     // .pipe( minJs() )
+    .pipe(sourcemaps.write())
     .on( 'error', log )
     .pipe( gulp.dest(path.dest) )
     .pipe( connect.reload() );
@@ -121,8 +124,7 @@ gulp.task('server', function() {
       return [
         modrewrite(
           [
-            '^/api/(.*)$ http://localhost:80/api/$1 [P]',
-            '^/uploads/(.*)$ http://localhost:80/uploads/$1 [P]'
+            '^/api/(.*)$ https://localhost:8081/$1 [P]',
           ]
         )
       ];
