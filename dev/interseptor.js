@@ -4,11 +4,12 @@
 
   app.factory('interseptor', interseptor);
 
-  interseptor.$inject = ['loadingService', '$location'];
-  function interseptor(loadingService, $location) {
+  interseptor.$inject = ['$location', 'loadingService', 'tokenService'];
+  function interseptor($location, loadingService, tokenService) {
     return {
       request: function(request) {
         loadingService.showSpinner();
+        request.headers['Authorization'] = tokenService.tokenName + ' ' + tokenService.getToken();
         return request;
       },
       response: function(response) {

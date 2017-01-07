@@ -3,8 +3,8 @@
 
   app.controller('authCtrl', ctrl);
 
-  ctrl.$inject = ['$location', 'authService'];
-  function ctrl($location, authService) {
+  ctrl.$inject = ['$location', 'authService', 'tokenService'];
+  function ctrl($location, authService, tokenService) {
     var vm = this;
 
     vm.authenticate = function(login, password) {
@@ -12,7 +12,7 @@
         if (res.data.error) {
           vm.errorMessage = res.data.message;
         } else {
-          authService.setToken(res.data.token);
+          tokenService.setToken(res.data.token);
           $location.path('/');
           // TODO: browser should ask to store password
         }

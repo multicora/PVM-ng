@@ -12,17 +12,5 @@
         password: password
       });
     };
-
-    this.setToken = function (token) {
-      return localStorage.setItem('biz.authToken', token);
-    };
-
-    this.getToken = function () {
-      return localStorage.getItem('biz.authToken');
-    };
-
-    this.clearToken = function () {
-      return localStorage.removeItem('biz.authToken');
-    };
   }
 })(angular);
