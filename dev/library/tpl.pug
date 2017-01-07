@@ -23,14 +23,12 @@
   //- TODO: fab-buttons
   //- {{watch-buttons isShownRecordPopup=isShownRecordPopup isShownUploadPopup=isShownUploadPopup}}
 
-  //- TODO: video-list
-  //- {{library-content-videos-container 
-  //-     isShownUploadPopup=isShownUploadPopup
-  //-     isShownRecordPopup=isShownRecordPopup
-  //-     videos=videos
-  //-     isShownSendPopup=isShownSendPopup
-  //-     videoId=videoId
-  //- }}
+  //- TODO: handlers
+  video-list(
+    list="vm.list"
+    on-upload-click="vm.uploadClickHandler()"
+    on-record-click="vm.recordClickHandler()"
+    on-send-click="vm.sendClickHandler()")
 
   //- {{send-popup
   //-     isShownSendPopup=isShownSendPopup

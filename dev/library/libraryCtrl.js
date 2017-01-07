@@ -5,8 +5,10 @@
 
   ctrl.$inject = ['libraryService'];
   function ctrl(libraryService) {
+    var vm = this;
+
     libraryService.getVideos().then(function (res) {
-      console.log(res.data);
+      vm.list = res.data.data;
     });
   }
 })(angular);
