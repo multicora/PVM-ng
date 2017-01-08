@@ -15,13 +15,9 @@
         li
           a(href='') CONTACTS
 
-  fab-buttons.watch-buttons
-    span.upload(ng-click="vm.uploadBtnClick()")
-      span.upload-icon
-        .fa.fa-cloud-upload(aria-hidden="true")
-    span.record(ng-click="vm.recordBtnClick()")
-      span.video-icon
-        .fa.fa-video-camera(aria-hidden="true")
+  video-fab-buttons(
+    upload-btn-click="vm.uploadBtnClick()"
+    record-btn-click="vm.recordBtnClick()")
 
   //- TODO: handlers
   video-list(
@@ -41,7 +37,6 @@
       .button-container
         button.close(ng-click="vm.closeSendPopup()") close
         button.save(ng-click="vm.sendVideo(email, vm.videoForSending)") send
-
 
   //- Record popup
   popup(ng-if="vm.showRecordPopup")

@@ -7,8 +7,14 @@
   function ctrl($routeParams, conversationsService) {
     var vm = this;
 
+    vm.showChatBox = false;
+
     conversationsService.get($routeParams.id).then(function (res) {
       console.log(res.data);
     });
+
+    vm.chatBoxClick = function () {
+      vm.showChatBox = true;
+    };
   }
 })(angular);
