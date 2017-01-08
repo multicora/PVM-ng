@@ -28,12 +28,20 @@
     list="vm.list"
     on-upload-click="vm.uploadBtnClick()"
     on-record-click="vm.recordBtnClick()"
-    on-send-click="vm.sendClickHandler()")
+    on-send-click="vm.sendClickHandler($data)")
 
-  //- {{send-popup
-  //-     isShownSendPopup=isShownSendPopup
-  //-     videoId=videoId
-  //- }}
+  //- Send popup
+  popup.send-popup-container(ng-if="vm.showSendPopup")
+    form.send-form({{action='', on='submit', }}='')
+      p.popupTitle send
+      input.email(
+        type="email"
+        placeholder="email"
+        ng-model="email")
+      .button-container
+        button.close(ng-click="vm.closeSendPopup()") close
+        button.save(ng-click="vm.sendVideo(email, vm.videoForSending)") send
+
 
   //- Record popup
   popup(ng-if="vm.showRecordPopup")
@@ -51,6 +59,7 @@
             ng-click="vm.sendRecordClick(vm.videoName)"
             ng-disabled="!vm.recordedData") save
 
+  //- Upload popup
   popup.uploadForm(ng-if="vm.showUploadPopup")
     form
       .uploadIconContainer

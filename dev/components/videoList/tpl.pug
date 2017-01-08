@@ -21,11 +21,4 @@
     .video-container(ng-repeat="item in vm.list")
       video-tile(
         video="item"
-        on-send-click="vm.onSendClick(item)")
-    //- |     {{#each videos as |video|}}
-    //- |       {{library-content-video
-    //- |           video=video
-    //- |           class="video-container"
-    //- |           onSendClick=(action 'onSendClick')
-    //- |       }}
-    //- |     {{/each}}
+        on-send-click="vm.onSendClick({$data: item})")

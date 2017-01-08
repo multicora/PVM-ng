@@ -3,12 +3,13 @@
 
   app.controller('libraryCtrl', ctrl);
 
-  ctrl.$inject = ['libraryService', 'uploadService'];
-  function ctrl(libraryService, uploadService) {
+  ctrl.$inject = ['libraryService', 'uploadService', 'conversationsService'];
+  function ctrl(libraryService, uploadService, conversationsService) {
     var vm = this;
 
     vm.showRecordPopup = false;
     vm.showUploadPopup = false;
+    vm.showSendPopup = false;
     vm.recordedData = null;
 
     libraryService.getVideos().then(function (res) {
@@ -50,6 +51,22 @@
 
     vm.uploadEnd = function () {
       vm.closeUploadPopup();
+    }
+
+    // Send
+    vm.sendClickHandler = function (video) {
+      vm.videoForSending = video;
+      vm.showSendPopup = true;
+    }
+
+    vm.closeSendPopup = function () {
+      vm.showSendPopup = false;
+    }
+
+    vm.sendVideo = function (email, video) {
+      conversationsService.create(email, video).then(function () {
+        vm.showSendPopup = false;
+      });
     }
   }
 })(angular);
