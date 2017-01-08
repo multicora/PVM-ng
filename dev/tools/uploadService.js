@@ -6,13 +6,13 @@
 
   service.$inject = ['$http'];
   function service($http) {
-    this.sendFile = function(data, name) {
+    this.sendFile = function(url, file, data) {
         var formData = new FormData();
-        formData.append('file', data);
-        formData.append('videoName', name);
+        formData.append('file', file);
+        formData.append('data', data);
 
-        $http.post(
-          "/api/video",
+        return $http.post(
+          url,
           formData,
           {
             withCredentials: false,
@@ -21,18 +21,6 @@
             },
             transformRequest: angular.identity,
             responseType: "arraybuffer"
-          }
-        ).then(
-          function(response, status, headers, config) {
-            console.log(response);
-
-            // if (status == 200 || status == 202) //do whatever in success
-            // else // handle error in  else if needed 
-          },
-          function(error, status, headers, config) {
-            console.log(error);
-
-            // handle else calls
           }
         );
       }
