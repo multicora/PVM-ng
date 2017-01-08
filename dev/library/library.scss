@@ -57,6 +57,143 @@
     }
   }
 
+  .watch-buttons {
+    .upload,
+    .record {
+      background: none;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 2px 4px 11px 0px rgba(0, 0, 0, 0.35);
+      color: rgba(255, 255, 255, 0.87);
+      cursor: pointer;
+      display: block;
+      font-size: 20px;
+      outline: none;
+
+      a {
+        color: rgba(255,255,255,0.87);
+        text-decoration: none;
+      }
+    }
+
+    .upload { 
+      background-color: $upload-buttons-color;
+      height: 40px;
+      line-height: 39px;
+      margin-left: 8px;
+      width: 40px;
+
+      .upload-icon {
+        display: inline-block;
+      }
+    }
+
+    .record {
+      background-color: $record-buttons-color;
+      height: 56px;
+      line-height: 54px;
+      position: relative;
+      width: 56px;
+      z-index: 1;
+
+      .video-icon {
+        display: inline-block;
+      }
+
+      .video-icon {
+        transform: rotation(0deg);
+        transition: 0.5s;
+      }
+    }
+
+    .record {
+      margin-top: -50px;
+      transition: 0.35s;
+    }
+  }
+
+  .watch-buttons:hover {
+    .record {
+      box-shadow: 2px 4px 11px 0px rgba(0, 0, 0, 0.75);
+      margin-top: 10px;
+      transition: 0.35s;
+
+      .video-icon {
+        transform: rotate(720deg);
+        transition: 0.5s;
+      }
+    }
+  }
+
+  .video-record-container {
+    max-width: 725px;
+    width: 100%;
+    border-radius: 2px;
+    background-color:  #f8f8f8;
+    box-shadow: 5px 10px 21px 0px rgba(0, 0, 0, 0.26);
+
+    .error {
+      margin-bottom: -30px;
+    }
+
+    .videoNameContainer {
+      text-align: center;
+
+      input {
+        border: 1px solid #f6f6f6;
+        background: none;
+        font-size: 18px;
+        margin: 10px 0 -10px 0;
+      }
+    }
+
+    .popupTitle {
+      padding-top: 25px;
+      color: rgba(0, 0, 0, 0.87);
+      text-align: center;
+      font-weight: 300;
+      font-size: 30px;
+      font-family: 'Roboto-Thin', Arial, sans-serif;
+    }
+
+    .button-container {
+      display: inline-block;
+      width: 100%;
+      text-align: right;
+      margin-top: 40px;
+
+      button {
+        border-radius: 2px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-color:  #f1f1f1;
+        width: 85px;
+        height: 36px;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.50);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      button:last-child {
+        margin-right: 15px;
+      }
+
+      button:hover {
+        color: rgba(0, 0, 0, 0.87);
+      }
+
+      .save:disabled {
+        cursor: default;
+      }
+    }
+
+    .record-video {
+      margin: 0 40px;
+    }
+  }
+
 }
 
 .ellipsis {

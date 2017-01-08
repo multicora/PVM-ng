@@ -51,11 +51,13 @@ gulp.task('compile-pug', function() {
 gulp.task('app-css', function () {
   return gulp.src(path.css)
     .pipe( order(config.scssOrder) )
+    .pipe(sourcemaps.init())
     .pipe( concat('app.css') )
     .pipe( plumber() )
     .pipe( sass() )
     .pipe( autoprefixer(config.autoprefixer) )
     .pipe( minCss() )
+    .pipe(sourcemaps.write())
     .on('error', log )
     .pipe( gulp.dest(path.dest) )
     .pipe( connect.reload() );

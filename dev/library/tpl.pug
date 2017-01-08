@@ -18,19 +18,38 @@
   //- TODO: upload file
   //- {{upload-video isShown=isShownUploadPopup}}
 
-  //- {{video-record isShown=isShownRecordPopup}}
-
-  //- TODO: fab-buttons
-  //- {{watch-buttons isShownRecordPopup=isShownRecordPopup isShownUploadPopup=isShownUploadPopup}}
+  fab-buttons.watch-buttons
+    span.upload(ng-click="vm.uploadBtnClick()")
+      span.upload-icon
+        .fa.fa-cloud-upload(aria-hidden="true")
+    span.record(ng-click="vm.recordBtnClick()")
+      span.video-icon
+        .fa.fa-video-camera(aria-hidden="true")
 
   //- TODO: handlers
   video-list(
     list="vm.list"
-    on-upload-click="vm.uploadClickHandler()"
-    on-record-click="vm.recordClickHandler()"
+    on-upload-click="vm.uploadBtnClick()"
+    on-record-click="vm.recordBtnClick()"
     on-send-click="vm.sendClickHandler()")
 
   //- {{send-popup
   //-     isShownSendPopup=isShownSendPopup
   //-     videoId=videoId
   //- }}
+
+  //- Record popup
+  popup(ng-if="vm.showRecordPopup")
+    .video-record-container
+      form.recordForm
+        p.popupTitle Record your video
+        .record-video
+          record-video(finish="vm.finishRecord($data)")
+        .videoNameContainer
+          input(type="text" value="vm.videoName" placeholder="Enter video name")
+        p.error(ng-if="vm.errorMessage") Error: {{vm.errorMessage}}
+        .button-container
+          button.cancel(ng-click="vm.closeRecordPopup()") cancel
+          button.save(
+            ng-click="vm.sendRecordClick(vm.videoName)"
+            ng-disabled="!vm.recordedData") save
