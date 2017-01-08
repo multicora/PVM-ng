@@ -18,5 +18,9 @@
 
       return $http.post('/api/conversations', data);
     };
+
+    this.get = function (id) {
+      return $http.get('/api/conversations/' + id);
+    };
   }
 })(angular);

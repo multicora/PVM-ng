@@ -16,6 +16,10 @@
       controller: 'libraryCtrl',
       controllerAs: 'vm',
       templateUrl: 'library/tpl.html'
+    }).when('/conversation/:id', {
+      controller: 'conversationCtrl',
+      controllerAs: 'vm',
+      templateUrl: 'conversations/tpl.html'
     }).when('/', {
       redirectTo: '/library'
     }).otherwise({ redirectTo: '/' });
